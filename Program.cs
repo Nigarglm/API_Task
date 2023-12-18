@@ -1,4 +1,6 @@
 using API_Task.DAL;
+using API_Task.Repositories.Implementations;
+using API_Task.Services.Implementations;
 using Microsoft.EntityFrameworkCore;
 
 namespace API_Task;
@@ -19,6 +21,8 @@ public class Program
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+        builder.Services.AddScoped<ICategoryRepository,CategoryRepository>();
+        builder.Services.AddScoped<ICategoryService, CategoryService>();
 
         var app = builder.Build();
 
